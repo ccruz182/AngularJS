@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col">
+    <h1>*ngIf</h1>
+    <hr>
+    <div *ngIf="mostrar" class="card text-white bg-secondary mb-3" style="max-width: 100%;">
+      <div class="card-body">
+        <h5 class="card-title">Secondary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+      </div>
+    </div>
+    <button (click)="mostrar = !mostrar" type="button" class="btn btn-outline-primary btn-block">Mostrar /
+      Ocultar</button>
+  </div>
+
+  <div class="col">
+    <h1>*ngFor</h1>
+    <hr>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let persona of personas; let i = index" list-group-item>
+          {{persona}} {{i}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
