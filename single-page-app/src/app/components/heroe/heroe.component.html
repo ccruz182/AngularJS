@@ -1,3 +1,11 @@
-<p>
-  heroe works!
-</p>
+<div class="card heroe-card">
+  <img class="card-img-top" src="{{heroe.img}}" alt="Card image cap" width="50%">
+  <div class="card-body">
+    <h5 class="card-title">{{heroe.nombre | uppercase }}</h5>
+    <p class="card-text">{{heroe.bio}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Aparición: {{heroe.aparicion | date: 'y'}}</li>
+    <li class="list-group-item">Casa: {{heroe.casa}}</li>    
+  </ul>  
+</div>

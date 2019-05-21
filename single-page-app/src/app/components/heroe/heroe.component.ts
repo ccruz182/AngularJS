@@ -8,14 +8,13 @@ import { Heroe, HeroesService } from "../../services/heroes.service";
   templateUrl: './heroe.component.html',
 })
 export class HeroeComponent implements OnInit {
-  
-  heroe:Heroe;
+
+  heroe: Heroe;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private _heroesService: HeroesService) {
-    this.activatedRoute.params.subscribe(params => {      
+    private _heroesService: HeroesService) {
+    this.activatedRoute.params.subscribe(params => {
       this.heroe = this._heroesService.getHeroe(params['id']);
-      console.log("-->", this.heroe);
     });
   }
 
