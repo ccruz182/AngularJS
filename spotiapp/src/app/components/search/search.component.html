@@ -1,3 +1,20 @@
-<p>
-  search works!
-</p>
+<div class="container" style="margin: auto;">
+
+  <div class="input-group input-group-lg">
+    <input type="text" class="form-control" placeholder="Busca a un artista ... " #artistaBusqueda />
+
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary" (click)="busquedaArtista(artistaBusqueda.value)">
+        Buscar
+      </button>
+    </div>
+  </div>
+
+  <div style="padding-top: 2rem;">
+    <div class="card-deck">
+      <app-artista [artista]="artista" *ngFor="let artista of artistas;">
+      </app-artista>
+    </div>
+  </div>
+
+</div>
