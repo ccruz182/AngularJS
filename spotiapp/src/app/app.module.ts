@@ -18,6 +18,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { MaterialCardComponent } from './components/material-card/material-card.component';
 import { TopTracksArtistaComponent } from './components/top-tracks-artista/top-tracks-artista.component';
 import { TopTrackCardComponent } from './components/top-track-card/top-track-card.component';
+import { SpinnerLoadingComponent } from './components/shared/spinner-loading/spinner-loading.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TopTrackCardComponent } from './components/top-track-card/top-track-car
     NavbarComponent,
     MaterialCardComponent,
     TopTracksArtistaComponent,
-    TopTrackCardComponent,       
+    TopTrackCardComponent,
+    SpinnerLoadingComponent,       
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class TopTracksArtistaComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const { id } = params;    
       this.spotifyService.getTopTracksOfArtist(id).subscribe((data: any) => {        
-        this.topTracks = data.tracks;
+        this.topTracks = data;
         console.log(this.topTracks)        
       });
     })

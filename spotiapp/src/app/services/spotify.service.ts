@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { map } from "rxjs/operators";
 @Injectable()
 export class SpotifyService {
   newReleases: any[] = [];
-  token: string = "BQC903AvZFyvcI_kKSyyvMBNMIjOK1MIyi7dtO21gWFucraTJ8hPlAs9qLi2i3I7ZZlZ0NbGvaPIQEG0K9w";
+  baseURL:string = "https://api.spotify.com/v1";
+  token: string = "BQD6R6QgAcfRx1nMjC0FkVu3vYJisdNahwtAuyY-yC2W_IL7jKDk1FusUdFH_fP3MwKno7Bvd80_aD0WkRo";
+  
 
   constructor(private http: HttpClient) { }
 
@@ -13,11 +15,12 @@ export class SpotifyService {
       "Authorization": `Bearer ${this.token}`
     });
 
-    return this.http.get("https://api.spotify.com/v1/browse/new-releases", { headers });
+    return this.http.get(`${this.baseURL}/browse/new-releases`, { headers })
+      .pipe(map((data:any) => data.albums.items));
   }
 
   getArtist(artist: string) {
-    const urlArtists: string = `https://api.spotify.com/v1/search?q=${artist}&type=artist`;
+    const urlArtists: string = `${this.baseURL}/search?q=${artist}&type=artist`;
     const headers = new HttpHeaders({
       "Authorization": `Bearer ${this.token}`
     });
@@ -26,12 +29,12 @@ export class SpotifyService {
   }
 
   getTopTracksOfArtist(artistId: string) {
-    const urlTopTracks: string = `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=MX`;
+    const urlTopTracks: string = `${this.baseURL}/artists/${artistId}/top-tracks?country=MX`;
     const headers = new HttpHeaders({
       "Authorization": `Bearer ${this.token}`
     });
 
-    return this.http.get(urlTopTracks, { headers });
+    return this.http.get(urlTopTracks, { headers }).pipe(map((data: any) => data.tracks));
   }
 
 }

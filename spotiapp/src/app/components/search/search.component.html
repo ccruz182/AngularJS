@@ -10,7 +10,12 @@
     </div>
   </div>
 
-  <div style="padding-top: 2rem;">
+  <div style="padding-left: 50%; padding-top: 5%">
+    <app-spinner-loading *ngIf="loading">
+    </app-spinner-loading>
+  </div>
+
+  <div style="padding-top: 2rem;" *ngIf="! loading">
     <div class="card-deck">
       <app-artista [artista]="artista" *ngFor="let artista of artistas;">
       </app-artista>

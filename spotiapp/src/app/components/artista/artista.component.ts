@@ -17,7 +17,7 @@ export class ArtistaComponent implements OnInit {
   }
 
   getArtistImage(artista: any) {
-    let resultado: string = "";
+    let resultado: string = "assets/img/noimage.png";
 
     if (artista.images.length != 0) {
       resultado = artista.images[0].url;
