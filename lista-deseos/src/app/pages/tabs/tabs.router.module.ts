@@ -13,6 +13,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
+          }, 
+          {
+            path: 'agregar',
+            loadChildren: '../agregar/agregar.module#AgregarPageModule'
           }
         ]
       },
@@ -24,7 +28,8 @@ const routes: Routes = [
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
           }
         ]
-      }      
+      },
+           
     ]
   },
   {

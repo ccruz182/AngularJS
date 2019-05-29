@@ -14,4 +14,8 @@ export class DeseosService {
 
     this.listasDeseos.push(lista1, lista2);
   }
+
+  agregarLista(titulo: string) {
+    this.listasDeseos.push(new Lista(titulo));
+  }
 }

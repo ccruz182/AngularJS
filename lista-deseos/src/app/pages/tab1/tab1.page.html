@@ -11,6 +11,15 @@
     <ion-item *ngFor="let item of listaDeseos" color="dark">
       <ion-label>{{item.titulo}}</ion-label>
     </ion-item>
-  </ion-list> +
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button 
+      color="tertiary"
+      (click)="agregarLista()"
+    >  
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
