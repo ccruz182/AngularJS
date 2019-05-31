@@ -17,7 +17,8 @@ export class Tab1Page {
     private router: Router,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController) {
-    this.listaDeseos = this.deseosService.listasDeseos;
+
+    this.listaDeseos = this.deseosService.obtenerListas();
   }
 
   async agregarLista() {
@@ -53,14 +54,30 @@ export class Tab1Page {
       return;
     }
 
-    this.deseosService.agregarLista(titulo);
-    
+    const idListaAgregada: number =
+      this.deseosService.agregarLista(titulo);
+
     const toast = await this.toastCtrl.create({
-      message: 'La lista se añadió correctamente', 
-      duration: 2500,
+      message: 'La lista se añadió correctamente',
+      duration: 1500,
       position: 'middle'
     });
 
     toast.present();
+
+    this.router.navigateByUrl(`/tabs/tab1/agregar/${idListaAgregada}`);
+  }
+
+
+  redireccionarAgregar(id: number) {
+    this.router.navigateByUrl(`/tabs/tab1/agregar/${id}`);
+  }
+
+
+  ionViewDidEnter() {
+    console.log("tab 1");
+    this.deseosService.filtro = false;
+    this.listaDeseos = this.deseosService.obtenerListas();
+    console.log(this.listaDeseos);
   }
 }

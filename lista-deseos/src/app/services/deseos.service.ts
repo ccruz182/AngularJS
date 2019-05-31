@@ -7,15 +7,45 @@ import { Lista } from '../models/lista.model';
 export class DeseosService {
 
   listasDeseos: Lista[] = [];
+  filtro: boolean = false;
 
   constructor() {
-    const lista1 = new Lista("Sacar a Kari");
-    const lista2 = new Lista("Alimentar a Kari");
-
-    this.listasDeseos.push(lista1, lista2);
+    this.obtenerStorage();
   }
 
-  agregarLista(titulo: string) {
-    this.listasDeseos.push(new Lista(titulo));
+  agregarLista(titulo: string): number {
+    const nuevaLista: Lista = new Lista(titulo);
+    this.listasDeseos.push(nuevaLista);    
+    this.guardarStorage();
+
+    return nuevaLista.id;
+  }
+
+  guardarStorage() {
+    console.log("---", this.listasDeseos);
+    localStorage.setItem('data', JSON.stringify(this.listasDeseos));
+  }
+
+  obtenerStorage() {
+    this.listasDeseos = JSON.parse(localStorage.getItem('data'));
+
+    if (this.listasDeseos === null) {
+      this.listasDeseos = [];
+    }
+  }
+
+  buscarLista(id: number): Lista {
+    return this.listasDeseos.find( lista => lista.id === id);
+  }
+
+  obtenerListas() {
+    console.log("Filtro", this.filtro);
+    let listas = [...this.listasDeseos];
+
+    if (this.filtro) {
+      listas = listas.filter(lista => lista.completada);
+    }
+
+    return listas;
   }
 }

@@ -1,0 +1,6 @@
+<ion-list color="dark">
+  <ion-item *ngFor="let item of listaDeseos" color="dark" (click)="redireccionarAgregar(item.id)">
+    <ion-label>{{item.titulo}}</ion-label>
+    <ion-note slot="end" color="tertiary"><b>{{item.items.length}} items</b></ion-note>
+  </ion-item>
+</ion-list>
