@@ -41,11 +41,19 @@ export class DeseosService {
   obtenerListas() {
     console.log("Filtro", this.filtro);
     let listas = [...this.listasDeseos];
+    console.log("*****", listas);
 
     if (this.filtro) {
       listas = listas.filter(lista => lista.completada);
+    } else {
+      listas = listas.filter(lista => ! lista.completada);
     }
 
     return listas;
+  }
+
+
+  eliminarLista(id: number) {
+    this.listasDeseos = this.listasDeseos.filter(lista => lista.id !== id);
   }
 }

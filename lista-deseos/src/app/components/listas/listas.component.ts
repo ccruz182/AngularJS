@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { DeseosService } from 'src/app/services/deseos.service';
 import { Lista } from 'src/app/models/lista.model';
+import { FunctionCall } from '@angular/compiler';
 
 @Component({
   selector: 'app-listas',
@@ -10,21 +11,23 @@ import { Lista } from 'src/app/models/lista.model';
   styleUrls: ['./listas.component.scss'],
 })
 export class ListasComponent implements OnInit {
-  
+
   @Input()
   listaDeseos: Lista[];
+
+  @Input()
+  fnEliminar: () => any;
 
   constructor(private deseosService: DeseosService,
     private router: Router) {
     // this.listaDeseos = this.deseosService.obtenerListas();  
-    
+
   }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
   redireccionarAgregar(id: number) {
     this.router.navigateByUrl(`/tabs/tab1/agregar/${id}`);
   }
-
 }

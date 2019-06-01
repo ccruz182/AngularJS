@@ -38,16 +38,15 @@ export class AgregarPage implements OnInit {
   }
 
   cambioCheck(item) {
-    let bandera:boolean = false;
+    let bandera:boolean = true;
     
     this.lista.items.forEach(item => {
-      if (!item.completado) 
+      if (!item.completado) {
+        bandera = false;
         return;
-      bandera = true;
+      }      
     });
-    
-    console.log("bandera -->", bandera);
-    
+        
     if (bandera) {
       this.lista.fechaTerminacion = new Date();
       this.lista.completada = true;

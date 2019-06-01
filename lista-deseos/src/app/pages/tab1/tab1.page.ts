@@ -74,10 +74,14 @@ export class Tab1Page {
   }
 
 
-  ionViewDidEnter() {
-    console.log("tab 1");
+  ionViewDidEnter() {    
     this.deseosService.filtro = false;
-    this.listaDeseos = this.deseosService.obtenerListas();
-    console.log(this.listaDeseos);
+    this.listaDeseos = this.deseosService.obtenerListas();    
+  }
+
+  eliminarLista = (id: number) => {    
+    this.deseosService.eliminarLista(id);
+    this.deseosService.guardarStorage(); 
+    this.ionViewDidEnter();
   }
 }
