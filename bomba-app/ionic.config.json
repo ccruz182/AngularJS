@@ -1,0 +1,8 @@
+{
+  "name": "bomba-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "3a2693e3"
+}

@@ -1,0 +1,17 @@
+<ion-header no-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Tab Two
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-list>
+    <ion-item-sliding *ngFor="let evento of eventos | async">
+      <ion-item color="dark"> 
+        Fecha: {{evento.hora | date: "medium"}}       
+      </ion-item>      
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
