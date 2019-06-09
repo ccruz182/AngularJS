@@ -16,7 +16,7 @@
       <ion-fab-button color="success" (click)="agregaEventoAhora()">
         <ion-icon name="flash"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="success">
+      <ion-fab-button color="success" (click)="agregaEventoPasado()">
         <ion-icon name="time"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
@@ -37,6 +37,12 @@
         </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-chip color="secondary">
+    <ion-icon name="stopwatch" color="primary"></ion-icon>
+    <ion-label>Trabaja cada {{promedio | number:'1.0-0'}} horas</ion-label>
+  </ion-chip>
+  
 
 
 

@@ -9,16 +9,25 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class Tab2Page {
   eventos:Observable<any[]>;
+  fechasPasadas: any[] = [];
 
-  constructor(private afDB: AngularFireDatabase) {
-    console.log("tab2");
+  constructor(private afDB: AngularFireDatabase) {    
     // this.eventos = afDB.list('evento').valueChanges();    
   }
 
   ionViewDidEnter() {
-    this.eventos = this.afDB.list('evento').valueChanges();    
-    this.eventos.subscribe(data => {
-      console.log("data", data);
+    this.fechasPasadas = [];
+    this.eventos = this.afDB.list('evento').valueChanges();
+    
+    this.eventos.subscribe(data => {  
+      const eventosPasados = [...data];      
+
+      eventosPasados.forEach(eventoPasado => {
+        this.fechasPasadas.push(eventoPasado.hora);
+      });
+
+      /* Se muestra la última vez y se calcula la diferencia */
+      this.fechasPasadas.sort().reverse();    
     })
   }
 
