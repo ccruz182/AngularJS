@@ -1,0 +1,16 @@
+<div [ngClass]="claseAlerta" role="alert">
+  ALERTA !!
+</div>
+
+<button class="btn btn-primary btn-large" (click)="cambiarEstilo()">Cambiar!</button>
+
+<hr />
+<br />
+
+<button class="btn btn-primary" (click)="ejecutar()" [disabled]="loading">
+  <i [ngClass]="{'fa-save': !loading, 'fa-save fa-spin': loading}" class="fa"></i>
+  
+  <span *ngIf="!loading">Guardar cambios</span>
+  <span *ngIf="loading" style="padding-left: 10px">Espere por favor</span>
+
+</button>
