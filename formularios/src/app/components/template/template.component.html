@@ -3,12 +3,19 @@
 <form novalidate (ngSubmit)="guardar(forma)" #forma="ngForm">
 
   <div>
- 
+
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
 
-        <input class="form-control" type="text" placeholder="Nombre" name="nombre" [ngModel]="usuario.nombre" required />
+        <input class="form-control" type="text" placeholder="Nombre" name="nombre" [ngModel]="usuario.nombre" required
+          minlength="5" #input_nombre="ngModel" />
+        <div *ngIf="input_nombre.errors?.required">
+          Este campo es requerido
+        </div>
+        <div *ngIf="input_nombre.errors?.minlength">
+          Este campo requiere al menos {{input_nombre.errors.minlength.requiredLength}} caracteres.
+        </div>
       </div>
     </div>
 
@@ -16,7 +23,13 @@
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
 
-        <input class="form-control" type="text" placeholder="Apellido" name="apellido" [ngModel]="usuario.apellido" required />
+        <input class="form-control" type="text" placeholder="Apellido" name="apellido" [ngModel]="usuario.apellido"
+          required #input_apellido="ngModel" />
+
+        <div *ngIf="input_apellido.errors?.required">
+          Este campo es requerido
+        </div>
+
       </div>
     </div>
 
@@ -26,7 +39,8 @@
     <label class="col-2 col-form-label">Correo</label>
     <div class="col-md-8">
 
-      <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [ngModel]="usuario.email" required />
+      <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [ngModel]="usuario.email"
+        required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
     </div>
   </div>
 
