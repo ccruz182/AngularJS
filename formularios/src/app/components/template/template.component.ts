@@ -13,8 +13,15 @@ export class TemplateComponent implements OnInit {
   usuario: any = {
     "nombre": null,
     "apellido": null,
-    "email": null
+    "email": null,
+    "pais": "MX",
+    "sexo": "Hombre"
   }
+
+  paises: object[] = [
+    {codigo: 'MX', nombre: 'México'}, {codigo: 'US', nombre: 'Estados Unidos'}
+  ]
+
   constructor() { }
 
   ngOnInit() {
