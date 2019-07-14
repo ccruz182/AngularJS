@@ -1,1 +1,50 @@
-<p>heroe works!</p>
+<h3>Héroe</h3>
+
+<button class="btn btn-outline-danger" [routerLink]="['/heroes']">
+  Regresar
+</button>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-12">
+    <form (ngSubmit)="guardar()" #forma="ngForm">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input
+          [(ngModel)]="heroe.nombre"
+          type="text"
+          name="nombre"
+          class="form-control"
+          placeholder="Nombre..."
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Casa</label>
+        <select [(ngModel)]="heroe.casa" name="casa" class="form-control">
+          <option value="Marvel">Marvel</option>
+          <option value="DC">DC</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea
+          [(ngModel)]="heroe.bio"
+          type="text"
+          name="bio"
+          class="form-control"
+          required
+        >
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary"
+        [disabled]="!forma.valid">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
